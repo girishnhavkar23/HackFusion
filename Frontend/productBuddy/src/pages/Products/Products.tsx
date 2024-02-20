@@ -6,7 +6,7 @@ function Products() {
   return (
     <>
       <div className='flex '>
-        <LeftSideBar/>
+        {/* <LeftSideBar/> */}
         <div className='grow'>
           <Nav1/>
           

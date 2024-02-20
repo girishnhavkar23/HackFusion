@@ -22,7 +22,7 @@ export default function Nav1() {
   }
 
   return (
-    <div className="relative w-full p-4">
+    <div className="relative w-full p-4 bg-[#313d4a]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           
@@ -32,11 +32,11 @@ export default function Nav1() {
           <ul className="ml-12 inline-flex space-x-8">
           
                 <NavLink to={"/"}>
-                <div className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900">
+                <div className="inline-flex items-center text-sm font-semibold text-white hover:text-gray-900">
                   Home
                 </div>
                 </NavLink>
-                <div className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900">
+                <div className="inline-flex items-center text-sm font-semibold text-white hover:text-gray-900">
                   About
                 </div>
               
