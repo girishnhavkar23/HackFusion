@@ -1,9 +1,16 @@
 import React from 'react'
+import BasicExample from './ProductCard'
+import ProductCard from './ProductCard'
 
 function AllProducts() {
   return (
     <div className='m-10'>
-      show all products
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
     </div>
   )
 }
