@@ -1,7 +1,6 @@
 Backend/venv/
-<<<<<<< HEAD
+myenv
 
-*.sqlite3
 
 *.pyc
 
