@@ -80,11 +80,12 @@ def get_product_topics(request, product_id):
     # Use the BERTopic model to get the topic for the new review
     topic, _ = topic_model.transform(review_list)
 
+    topics = topic_model.get_topic(0)
     print(topic_model.get_topic(0))
     #print(topic_model.get_document_info(review_list))
 
     # Return the topic in the HTTP response
-    return HttpResponse(f"The topic of your review is: {topic}")
+    return HttpResponse(f"The topic of your review is: {topics}")
 
 # @api_view(['GET'])
 # def get_product_topics(request):
