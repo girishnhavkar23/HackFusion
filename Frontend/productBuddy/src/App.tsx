@@ -10,55 +10,22 @@ import React from 'react';
 import { useProfileStore } from './store/store';
 
 const HomePage = React.lazy(()=>import ('./pages/Home/Home'))
-const SignUp = React.lazy(()=>import ('./pages/Auth/SignUp'))
-const SignIn = React.lazy(()=>import ('./pages/Auth/SignIn'))
-const Report = React.lazy(()=>import ('./pages/Report/Report'))
-const VolunDash = React.lazy(()=>import ('./pages/volunteerDash/VolunteerDash'))
-const InvestDash = React.lazy(()=>import ('./pages/InvestDash/InvestigatorDash'))
-const InvestSignin = React.lazy(()=>import ('./pages/Auth/SigninInvestigator'))
-const InvestSignup = React.lazy(()=>import ('./pages/Auth/SignupInvestigator'))
-const ChatUser = React.lazy(()=>import ('./pages/Chat/chatUser'))
 const Products = React.lazy(()=>import('./pages/Products/Products'))
+const AllProducts = React.lazy(()=>import ('./pages/Products/AllProducts'))
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage/>,
   },
   {
-    path: "/signup",
-    element: <SignUp/>,
-  },
-  {
-    path: "/signin",
-    element: <SignIn/>,
-  },
-  {
-    path: "/signin-investigator",
-    element: <InvestSignin/>,
-  },
-  {
-    path: "/report",
-    element: <Report/>,
-  },
-  {
-    path:"/volun-dash",
-    element: <VolunDash/>,
-  },
-  {
-    path:"/invest-dash",
-    element: <InvestDash/>,
-  },
-  {
-    path:"/invest-signup",
-    element: <InvestSignup/>,
-  },
-  {
-    path:"/chat/:userId",
-    element: <ChatUser/>,
-  },
-  {
     path:"/products",
     element: <Products/>,
+    children:[
+      {
+        path:"allProducts",
+        element:<AllProducts/>,
+      },
+    ]
   }
 
 ])
