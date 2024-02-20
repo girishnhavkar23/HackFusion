@@ -16,3 +16,7 @@ class ReviewScore(models.Model):
 class ProductTotalScore(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE)
     total_score = models.FloatField()
+
+class ProductTopic(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    topics = models.TextField()
