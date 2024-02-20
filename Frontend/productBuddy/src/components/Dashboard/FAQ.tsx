@@ -1,4 +1,3 @@
-
 export default function Faq() {
   return (
     <section className="px-2 mt-[100px]">
@@ -18,31 +17,31 @@ export default function Faq() {
                     How does the anonymous reporting process work?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Our platform provides a secure and confidential channel for individuals to report crimes without revealing their identity. You can submit information online or through our hotline, and your identity will be protected throughout the process.
+                  Our platform provides a secure and confidential channel for individuals to submit feedback on Amazon products without revealing their identity. You can share your opinions online or through our designated feedback submission form, and your identity will remain protected throughout the process.
                   </dd>
                 </div>
                 <div  className="mt-10 first:mt-0">
                   <dt className="text-lg font-semibold leading-6 text-gray-900">
-                  Is the anonymity of the reporter guaranteed?
+                  Is the anonymity of the reviewer guaranteed?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Yes, we take the anonymity of reporters very seriously. We use advanced encryption techniques and do not collect any personally identifiable information unless voluntarily provided. Even our staff members cannot access the identity of the reporter.
+                  Yes, we take the anonymity of reviewers very seriously. We employ robust encryption techniques and do not collect any personally identifiable information unless explicitly provided. Our platform ensures that even our staff members cannot access the identity of the reviewer.
                   </dd>
                 </div>
                 <div  className="mt-10 first:mt-0">
                   <dt className="text-lg font-semibold leading-6 text-gray-900">
-                  What types of crimes can be reported through this platform?
+                  What types of feedback can be reported through this platform?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Our platform accepts reports for a wide range of crimes, including but not limited to theft, vandalism, assault, fraud, harassment, and illegal activities. We encourage individuals to report any suspicious or criminal activity they witness.
+                  Our platform accepts feedback for a wide range of Amazon products, including but not limited to electronics, books, clothing, household items, and more. We encourage individuals to share their honest opinions and experiences with any product they've purchased or interacted with on Amazon.
                   </dd>
                 </div>
                 <div  className="mt-10 first:mt-0">
                   <dt className="text-lg font-semibold leading-6 text-gray-900">
-                  How will reported information be used by law enforcement or relevant authorities?
+                  How will the reported feedback be used by sellers or relevant stakeholders?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Once a report is submitted, our team reviews the information and forwards credible reports to the appropriate law enforcement or relevant authorities for further investigation. We collaborate closely with authorities to ensure timely and appropriate action is taken based on the information provided.
+                  Once feedback is submitted, our team analyzes the information to extract insights and identify prevailing sentiments and themes within Amazon customer reviews. Credible feedback is then aggregated and provided to sellers or relevant stakeholders for further analysis and action. We collaborate closely with sellers to help them understand customer sentiments and make informed decisions to improve their products and services.
                   </dd>
                 </div>
               
@@ -51,5 +50,5 @@ export default function Faq() {
         </div>
       </div>
     </section>
-  )
+  )
 }

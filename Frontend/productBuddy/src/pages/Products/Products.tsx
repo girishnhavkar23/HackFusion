@@ -6,9 +6,10 @@ function Products() {
   return (
     <>
       <div className='flex '>
-        <LeftSideBar/>
-        <div className='grow bg-orange-50'>
+        {/* <LeftSideBar/> */}
+        <div className='grow'>
           <Nav1/>
+          
           <div className='overflow-y-scroll grow main-content'>
             <Outlet/>
           </div>
@@ -16,6 +17,7 @@ function Products() {
         </div>
 
       </div>
+       
     </>
   )
 }

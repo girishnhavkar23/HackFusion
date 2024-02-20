@@ -12,13 +12,14 @@ import { useProfileStore } from './store/store';
 const HomePage = React.lazy(()=>import ('./pages/Home/Home'))
 const Products = React.lazy(()=>import('./pages/Products/Products'))
 const AllProducts = React.lazy(()=>import ('./pages/Products/AllProducts'))
+const ProductPage = React.lazy(()=>import ('./pages/Products/ProductPage'))
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage/>,
   },
   {
-    path:"/products",
+    path:"/dash",
     element: <Products/>,
     children:[
       {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
         element:<AllProducts/>,
       },
     ]
-  }
+  },
+  {
+    path: "/product/:productId",
+    element: <ProductPage/>,
+  },
 
 ])
 function App() {
