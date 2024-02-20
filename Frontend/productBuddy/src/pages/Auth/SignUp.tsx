@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { signup, signupUser, suggestUsername } from '../../api';
+import { signupUser } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 

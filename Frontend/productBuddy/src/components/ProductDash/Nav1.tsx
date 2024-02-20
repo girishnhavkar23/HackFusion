@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import { Menu, X, ChevronRight } from 'lucide-react'
 import { NavLink, useNavigate,  } from 'react-router-dom'
-import { useProfileStore } from '@/store/store'
 import { Button } from "@/components/ui/button"
 import { Input } from '../ui/input'
 
@@ -13,11 +12,7 @@ export default function Nav1() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
-  const token = useProfileStore((state)=>state.token)
-
-  const logout = useProfileStore((state)=>state.logout)
   const handleLogout = ()=>{
-    logout()
     navigate("/")
   }
 
@@ -42,13 +37,13 @@ export default function Nav1() {
               
           </ul>
         </div>
-        {token ? <><div className='flex gap-4'><NavLink to="/report"><Button>Report a Problem</Button></NavLink><Button onClick={handleLogout}>Log Out</Button></div></>:
+        
 
         <div className="hidden space-x-2 lg:block">
           
           <Input placeholder='Search'/>
         </div>
-        }
+        
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>

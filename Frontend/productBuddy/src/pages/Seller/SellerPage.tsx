@@ -1,11 +1,11 @@
 import Nav1 from "@/components/ProductDash/Nav1"
-import AllProducts from "../Products/AllProducts"
+import { Outlet } from "react-router-dom"
 
 function SellerPage() {
   return (
     <div>
       <Nav1/>
-      <AllProducts/>
+      <Outlet/>
     </div>
   )
 }

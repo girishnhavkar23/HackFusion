@@ -48,14 +48,6 @@ export default function ReportModal({
       console.log(e)
     }
   }
-  const handleReject = async ()=>{
-    try{
-      const response = await updayeStatus(reportId,{status:"rejected"})
-      toast.success("Report Status updated Successfully")
-    }
-    catch(e){
-      console.log(e)
-    }
   }
   return (
     <Card className="flex p-6 min-w-[800px]">
