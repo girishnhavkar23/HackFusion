@@ -8,7 +8,7 @@ export function Footer() {
             <a href="#">
               <div className="inline-flex items-center">
                
-                <span className="ml-4 text-lg font-bold">Corruption Watch</span>
+                <span className="ml-4 text-lg font-bold">Product Buddy</span>
               </div>
             </a>
           </div>

@@ -4,22 +4,10 @@ import { Menu, X, ChevronRight } from 'lucide-react'
 import { NavLink, useNavigate,  } from 'react-router-dom'
 import { useProfileStore } from '@/store/store'
 import { Button } from "@/components/ui/button"
-const menuItems = [
-  {
-    name: 'Home',
-    href: '/',
-  },
-  {
-    name: 'Explore Products',
-    href: '/products',
-  },
-  {
-    name: 'Contact',
-    href: '#',
-  },
-]
+import { Input } from '../ui/input'
 
-export default function ExampleNavbarThree() {
+
+export default function Nav1() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const navigate=useNavigate()
   const toggleMenu = () => {
@@ -34,7 +22,7 @@ export default function ExampleNavbarThree() {
   }
 
   return (
-    <div className="relative w-full bg-[#cdd2d8] p-4">
+    <div className="relative w-full p-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           
@@ -42,38 +30,23 @@ export default function ExampleNavbarThree() {
         </div>
         <div className="hidden grow items-start lg:flex">
           <ul className="ml-12 inline-flex space-x-8">
-            {menuItems.map((item) => (
-              <NavLink to={item.href} key={item.name}>
-                <div
-                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
-                >
-                  {item.name}
+          
+                <NavLink to={"/"}>
+                <div className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900">
+                  Home
                 </div>
-              </NavLink>
-            ))}
+                </NavLink>
+                <div className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900">
+                  About
+                </div>
+              
           </ul>
         </div>
         {token ? <><div className='flex gap-4'><NavLink to="/report"><Button>Report a Problem</Button></NavLink><Button onClick={handleLogout}>Log Out</Button></div></>:
 
         <div className="hidden space-x-2 lg:block">
-          <NavLink to="/signin">
-
-          <button
-            type="button"
-            className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Sign In
-          </button>
-          </NavLink>
-          <NavLink to="/signup">
-
-          <button
-            type="button"
-            className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Sign up
-          </button>
-          </NavLink>
+          
+          <Input placeholder='Search'/>
         </div>
         }
         <div className="lg:hidden">
@@ -100,20 +73,7 @@ export default function ExampleNavbarThree() {
                 </div>
                 <div className="mt-6">
                   <nav className="grid gap-y-4">
-                    {menuItems.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
-                      >
-                        <span className="ml-3 text-base font-medium text-gray-900">
-                          {item.name}
-                        </span>
-                        <span>
-                          <ChevronRight className="ml-3 h-4 w-4" />
-                        </span>
-                      </a>
-                    ))}
+                   
                   </nav>
                 </div>
                 <div className="mt-2 space-y-2">

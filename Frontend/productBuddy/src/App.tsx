@@ -18,6 +18,7 @@ const InvestDash = React.lazy(()=>import ('./pages/InvestDash/InvestigatorDash')
 const InvestSignin = React.lazy(()=>import ('./pages/Auth/SigninInvestigator'))
 const InvestSignup = React.lazy(()=>import ('./pages/Auth/SignupInvestigator'))
 const ChatUser = React.lazy(()=>import ('./pages/Chat/chatUser'))
+const Products = React.lazy(()=>import('./pages/Products/Products'))
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     path:"/chat/:userId",
     element: <ChatUser/>,
   },
+  {
+    path:"/products",
+    element: <Products/>,
+  }
 
 ])
 function App() {
