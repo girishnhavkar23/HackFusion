@@ -1,6 +1,7 @@
 Backend/venv/
 myenv
 
+Backend/crescendo_backend/BERTopic_Model_New
 
 *.pyc
 
