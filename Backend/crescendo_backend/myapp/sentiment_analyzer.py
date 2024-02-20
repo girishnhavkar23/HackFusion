@@ -7,8 +7,8 @@ class SentimentAnalyzer:
         self.tokenizer = AutoTokenizer.from_pretrained("nlptown/bert-base-multilingual-uncased-sentiment")
         self.model = AutoModelForSequenceClassification.from_pretrained("nlptown/bert-base-multilingual-uncased-sentiment")
 
-    def get_rating(self):
-        token = self.tokenizer.encode("I love this product", return_tensors="pt")
+    def get_rating(self, review):
+        token = self.tokenizer.encode(review, return_tensors="pt")
         result = self.model(token)
         return int(torch.argmax(result.logits) + 1)
     
@@ -19,8 +19,13 @@ class SentimentAnalyzer:
             result = self.model(token)
             total += int(torch.argmax(result.logits) + 1)
         return total / len(reviews)
+    
 
-print("Initializing Model...")
-sentiment_analyzer = SentimentAnalyzer()
-print("Get Rating:", sentiment_analyzer.getRating())
+# print("Initializing Model...")
+# sentiment_analyzer = SentimentAnalyzer()
+#print("Get Rating:", sentiment_analyzer.get_rating())
+
+
+
+
 
