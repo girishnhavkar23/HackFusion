@@ -13,7 +13,7 @@ export default function SignInOne() {
       try{
         await loginUser({username,password})
         toast.success("Successfully signed in")
-        navigate("/seller")
+        navigate("/seller/allProducts")
         
       }
       catch(e){

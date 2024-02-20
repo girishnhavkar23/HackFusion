@@ -13,7 +13,8 @@ const ProductPage = React.lazy(() => import("./pages/Products/ProductPage"));
 const SellerPage = React.lazy(() => import("./pages/Seller/SellerPage"));
 const Signin = React.lazy(() => import("./pages/Auth/SignIn"));
 const Signup = React.lazy(() => import("./pages/Auth/SignUp"));
-
+const SellerProductPage = React.lazy(() => import("./pages/Seller/SellerProductPage"));
+const SellerAllProducts= React.lazy(() => import("./pages/Seller/SellerAllProduct"));
 const router = createBrowserRouter([
   {
     path: "/signin",
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
     children:[
       {
         path: "allProducts",
-        element: <AllProducts />,
+        element: <SellerAllProducts />,
+      },
+      {
+        path: "product/:productId",
+        element: <SellerProductPage />,
       }
     ]
   },
