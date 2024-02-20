@@ -35,3 +35,5 @@ export const checkMessage = (userId:string)=>API.get(`user/checkMessages/${userI
 
 
 export const getAllProducts= ()=>API.get(`products/`)
+export const loginUser = (authData:{username:string,password:string})=>API.post('login/',authData)
+export const signupUser = (authData:{username:string,password:string})=>API.post('signup/',authData)

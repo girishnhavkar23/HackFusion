@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.http import JsonResponse
 
@@ -14,6 +15,7 @@ from django.contrib.auth import logout, authenticate, login
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
 # Create your views here.
 
 def home(request):
@@ -40,6 +42,32 @@ def review_sentiment_score(request, product_id):
         ProductTotalScore.objects.create(product_id=product_id, total_score=avgScore)
     return Response({'review_scores': review_scores, 'avgScore': avgScore}) #Returns review score pair!
 
+# @api_view(['GET'])
+# def get_product_topics(request):
+#     modeler = TopicModeler()
+#     reviews = Review.objects.filter()
+#     reviews_doc = [review.text for review in reviews]
+#     topics = modeler.model.fit_transform(reviews_doc)
+    
+
+#     products = Product.objects.all()
+
+# # For each product, get its reviews and calculate topics using the trained model
+#     product_topics = {}
+#     for product in products:
+#         reviews = Review.objects.filter(product=product)
+
+#         review_texts = [review.text for review in reviews]
+
+#         topics, _ = modeler.model.fit_transform(review_texts)
+
+#         product_topics.append({
+#             'product_id': product.id,
+#             'topics': topics
+#         })
+        
+#     return Response({'topics': product_topics})
+
 class ProductListView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -51,33 +79,46 @@ class ProductReviewListView(ListAPIView):
         product_id = self.kwargs['product_id']
         return Review.objects.filter(product_id=product_id)
     
+<<<<<<< HEAD
 # Create your views here.
 def index(request):
     print(request.user)
     if request.user.is_anonymous:
         return redirect("/login") 
     return render(request, 'index.html')
+=======
+#Login/Logout
+    
+from django.contrib.auth.models import User
+from rest_framework import status
 
-def loginUser(request):
-    if request.method=="POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        print(username, password)
+@api_view(['POST'])
+def signup(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data['username']
+        password = data['password']
+        try:
+            user = User.objects.create_user(username=username, password=password)
+            user.save()
+            return JsonResponse({'info': 'User created!'}, status=status.HTTP_201_CREATED)
+        except:
+            return JsonResponse({'info': 'User already exists!'}, status=status.HTTP_409_CONFLICT)
 
-        # check if user has entered correct credentials
-        user = authenticate(username=username, password=password)
+@api_view(['POST'])
+def login(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data['username']
+        password = data['password']
+        try:
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                return JsonResponse({'info': 'Login successful!'}, status=status.HTTP_200_OK)
+            else:
+                return JsonResponse({'info': 'Incorrect credentials!'}, status=status.HTTP_401_UNAUTHORIZED)
+        except User.DoesNotExist:
+            return JsonResponse({'info': 'User does not exist!'}, status=status.HTTP_404_NOT_FOUND)
+>>>>>>> c963140068695ea1dd1c77a766e4b6b12c0325ed
 
-        if user is not None:
-            # A backend authenticated the credentials
-            login(request, user)
-            return redirect("/")
 
-        else:
-            # No backend authenticated the credentials
-            return render(request, 'login.html')
-
-    return render(request, 'login.html')
-
-def logoutUser(request):
-    logout(request)
-    return redirect("/login")
