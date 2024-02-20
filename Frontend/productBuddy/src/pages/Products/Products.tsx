@@ -7,7 +7,7 @@ function Products() {
     <>
       <div className='flex '>
         <LeftSideBar/>
-        <div className='grow bg-orange-50'>
+        <div className='grow'>
           <Nav1/>
           <div className='overflow-y-scroll grow main-content'>
             <Outlet/>
