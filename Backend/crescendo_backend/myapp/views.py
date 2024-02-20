@@ -1,10 +1,11 @@
+import json
 from django.shortcuts import render
 from django.http import JsonResponse
 
 from rest_framework.generics import ListAPIView
 from .models import Product, Review, ReviewScore, ProductTotalScore
 from .serializers import ProductSerializer, ReviewSerializer
-from .sentiment_analyzer import SentimentAnalyzer, TopicModeler
+from .sentiment_analyzer import SentimentAnalyzer
 from django.http import JsonResponse
 
 from rest_framework.decorators import api_view
@@ -81,10 +82,11 @@ from rest_framework import status
 @api_view(['POST'])
 def signup(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        data = json.loads(request.body)
+        username = data['username']
+        password = data['password']
         try:
-            user = User.objects.create_user(username, password=password)
+            user = User.objects.create_user(username=username, password=password)
             user.save()
             return JsonResponse({'info': 'User created!'}, status=status.HTTP_201_CREATED)
         except:
@@ -93,8 +95,9 @@ def signup(request):
 @api_view(['POST'])
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        data = json.loads(request.body)
+        username = data['username']
+        password = data['password']
         try:
             user = User.objects.get(username=username)
             if user.check_password(password):
