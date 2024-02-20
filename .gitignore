@@ -1,7 +1,8 @@
 Backend/venv/
-myenv
+<<<<<<< HEAD
 
 *.sqlite3
 
 *.pyc
+
 Frontend/productBuddy/node_modules
