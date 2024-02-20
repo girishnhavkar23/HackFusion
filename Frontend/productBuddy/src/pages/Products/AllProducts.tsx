@@ -1,5 +1,3 @@
-import React from 'react'
-import BasicExample from './ProductCard'
 import ProductCard from './ProductCard'
 
 function AllProducts() {

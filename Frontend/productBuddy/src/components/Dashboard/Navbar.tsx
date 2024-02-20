@@ -11,7 +11,7 @@ const menuItems = [
   },
   {
     name: 'Explore Products',
-    href: '/products',
+    href: '/products/allProducts',
   },
   {
     name: 'Contact',

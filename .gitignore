@@ -1,2 +1,7 @@
 Backend/venv/
+myenv
+
+
+*.pyc
+
 Frontend/productBuddy/node_modules

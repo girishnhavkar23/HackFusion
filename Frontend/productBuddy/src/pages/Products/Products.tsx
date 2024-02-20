@@ -8,7 +8,7 @@ function Products() {
     <>
       <div className='flex '>
         <LeftSideBar/>
-        <div className='grow bg-orange-50'>
+        <div className='grow'>
           <Nav1/>
           <AllProducts/>
           <div className='overflow-y-scroll grow main-content'>
@@ -16,7 +16,7 @@ function Products() {
           </div>
 
         </div>
-    
+
       </div>
        
     </>
