@@ -1,9 +1,7 @@
 Backend/venv/
-<<<<<<< HEAD
+myenv
 
 *.sqlite3
 
 *.pyc
-=======
 Frontend/productBuddy/node_modules
->>>>>>> 2efe7029de40b6e0a78d43bde1545d1d1ba375a2
