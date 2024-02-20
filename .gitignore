@@ -1,2 +1,5 @@
 Backend/venv/
 
+*.sqlite3
+
+*.pyc
