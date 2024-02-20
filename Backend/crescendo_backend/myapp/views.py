@@ -124,6 +124,11 @@ class ProductReviewListView(ListAPIView):
         product_id = self.kwargs['product_id']
         return Review.objects.filter(product_id=product_id)
     
+@api_view(['GET'])
+def get_single_product_info(request, product_id):
+    product = Product.objects.get(id=product_id)
+    return JsonResponse({'product-info': ProductSerializer(product).data})
+    
 #Login/Logout
     
 from django.contrib.auth.models import User

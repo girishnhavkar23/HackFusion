@@ -4,6 +4,7 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
+    image_url = models.URLField(blank=True)
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
