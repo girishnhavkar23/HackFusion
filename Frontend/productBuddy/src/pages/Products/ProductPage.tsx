@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav1 from '@/components/ProductDash/Nav1';
+import { useParams } from 'react-router-dom';
+import ReviewEmotion from './ReviewEmotion';
+import { reviewSentimentScore } from '@/api';
 
-function ProductPage() {
+function ProductPage({title}:{title:string}) {
+  const {productId} = useParams()
+  const [sentiment,setSentiment] = useState()
+  useEffect(()=>{
+    const fetchSentiment = async ()=>{
+      try{
+        const response1 = await reviewSentimentScore(Number(productId))
+        setSentiment(response1.data.avgScore)
+      }
+      catch(e){
+        console.log(e)
+      }
+    }
+    fetchSentiment();
+  },[])
+
+
   return (
     <>
       <Nav1 />
@@ -16,11 +35,13 @@ function ProductPage() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum cursus auctor semper. 
               Sed bibendum tortor ut libero accumsan, sit amet consequat sapien pulvinar.
             </p>
-            <div className="text-xl text-purple-600 mb-6">Price: $99.99</div>
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 ease-in-out">Buy Now</button>
+            {/* <div className="text-xl text-purple-600 mb-6">Price: $99.99</div> */}
+            <div className="text-md font-bold text-black mb-6">Average Sentiment Score of All the Reviews: {sentiment}</div>
+            
           </div>
         </div>
       </div>
+      <ReviewEmotion id={Number(productId)}/>
     </>
   );
 }
