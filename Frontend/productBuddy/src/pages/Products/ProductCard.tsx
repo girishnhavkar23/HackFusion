@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { NavLink } from 'react-router-dom';
 
-function ProductCard() {
+function ProductCard({title}:{title:string}) {
   return (
     <Card style={{ 
       width: '20rem', 
@@ -12,7 +12,7 @@ function ProductCard() {
     }} className='rounded-md flex flex-col gap-4'>
       <Card.Img variant="top" src="https://images.unsplash.com/photo-1708022774121-4107be488ad8?q=80&w=1987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
       <Card.Body className='flex flex-col gap-2'>
-        <Card.Title className='text-[20px] font-bold'>Card Title</Card.Title>
+        <Card.Title className='text-[20px] font-bold'>{title}</Card.Title>
         <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.

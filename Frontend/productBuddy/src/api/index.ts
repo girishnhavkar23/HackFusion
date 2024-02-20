@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = "http://localhost:5000/"
+const baseURL = "http://localhost:8000/"
 const API = axios.create({ baseURL: baseURL})
 
 
@@ -32,3 +32,6 @@ export const oldfetchMessage = (userId:string,investigatorId:string,participants
 export const fetchMessage = (userId:string,investigatorId:string)=>API.get(`chat/${userId}/${investigatorId}`)
 
 export const checkMessage = (userId:string)=>API.get(`user/checkMessages/${userId}`)
+
+
+export const getAllProducts= ()=>API.get(`products/`)
