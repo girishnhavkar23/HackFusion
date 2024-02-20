@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 function ProductCard() {
   return (
     <Card style={{ 
-      width: '18rem', 
+      width: '20rem', 
       border: '1px solid #343a40', // Dark border color
       padding: '15px', // Add padding
       margin: '20px' // Add margin

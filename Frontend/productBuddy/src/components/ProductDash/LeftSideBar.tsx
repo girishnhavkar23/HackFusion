@@ -15,8 +15,8 @@ export default function LeftSideBar() {
         
         
         <div 
-          className={"sidebar-menu-item hover:bg-slate-100 duration-150  p-3 flex flex-col justify-center items-center text-dark text-decoration-none w-100"}         >
-          Hello
+          className={"text-black sidebar-menu-item hover:bg-slate-100 duration-150  p-3 flex flex-col justify-center items-center text-dark text-decoration-none w-100"}         >
+          Categories
 
         </div>
         
