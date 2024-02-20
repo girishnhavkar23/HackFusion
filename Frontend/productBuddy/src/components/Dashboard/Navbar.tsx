@@ -2,8 +2,7 @@
 import React, { useEffect } from 'react'
 import { Menu, X, ChevronRight } from 'lucide-react'
 import { NavLink, useNavigate,  } from 'react-router-dom'
-import { useProfileStore } from '@/store/store'
-import { Button } from "@/components/ui/button"
+
 const menuItems = [
   {
     name: 'Home',
@@ -21,16 +20,8 @@ const menuItems = [
 
 export default function ExampleNavbarThree() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-  const navigate=useNavigate()
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
-  }
-  const token = useProfileStore((state)=>state.token)
-
-  const logout = useProfileStore((state)=>state.logout)
-  const handleLogout = ()=>{
-    logout()
-    navigate("/")
   }
 
   return (
@@ -53,7 +44,6 @@ export default function ExampleNavbarThree() {
             ))}
           </ul>
         </div>
-        {token ? <><div className='flex gap-4'><NavLink to="/report"><Button>Report a Problem</Button></NavLink><Button onClick={handleLogout}>Log Out</Button></div></>:
 
         <div className="hidden space-x-2 lg:block">
           <NavLink to="/signin">
@@ -75,7 +65,7 @@ export default function ExampleNavbarThree() {
           </button>
           </NavLink>
         </div>
-        }
+        
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>

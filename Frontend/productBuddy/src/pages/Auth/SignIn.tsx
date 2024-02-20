@@ -1,20 +1,19 @@
 import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import toast from 'react-hot-toast';
-import { useProfileStore } from '@/store/store';
 import {useNavigate } from 'react-router-dom';
+import { loginUser } from '@/api';
 
 export default function SignInOne() {
   const [username,setUsername] = useState("");
   const [password,setPassword] =useState("")
-  const login = useProfileStore((state)=>state.login)
   
   const navigate=useNavigate()
   const handleSubmit= async ()=>{
       try{
-        await login({username,password})
+        await loginUser({username,password})
         toast.success("Successfully signed in")
-        navigate("/volun-dash")
+        navigate("/seller")
         
       }
       catch(e){

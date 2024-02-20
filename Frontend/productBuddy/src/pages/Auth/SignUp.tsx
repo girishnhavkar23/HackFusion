@@ -1,21 +1,21 @@
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { signup, suggestUsername } from '../../api';
+import { signup, signupUser, suggestUsername } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 
 export default function SignUpOne() {
   const [username,setUsername] = useState("")
-  const [email,setEmail] = useState("");
+  // const [email,setEmail] = useState("");
   const [password,setPassword] =useState("")
   const [verified,setVerified]=useState(false)
   const navigate = useNavigate()
   console.log(verified)
   const handleSubmit= async ()=>{
       try{
-        const response = await signup({username,email,password})
+        const response = await signupUser({username,password})
         toast.success("successfully created account")
         navigate("/signin")
       }
@@ -23,18 +23,6 @@ export default function SignUpOne() {
         toast.error("error")
       }
   } 
-  useEffect(()=>{
-    const getUsername =async()=>{
-      try{
-        const response = await suggestUsername();
-        setUsername(response.data.suggestedUsername)
-      }
-      catch(e){
-        console.log(e)
-      }
-    }
-    getUsername();
-  },[])
 
   console.log(verified)
   const handleCaptchaChange = (value: string | null) => {
@@ -77,15 +65,15 @@ export default function SignUpOne() {
                     <input
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="text"
-                      placeholder="Full Name"
+                      placeholder="username"
                       id="name"
                       value={username}
                       onChange={(e)=>{setUsername(e.target.value)}}
                     ></input>
                   </div>
-                  <p className='text-[10px] text-[#d33c3d]'>Please remember this username as you it is assigned randomly</p>
+                  {/* <p className='text-[10px] text-[#d33c3d]'>Please remember this username as you it is assigned randomly</p> */}
                 </div>
-                <div>
+                {/* <div>
                   <label htmlFor="email" className="text-base font-medium text-gray-900">
                     {' '}
                     Email address{' '}
@@ -101,7 +89,7 @@ export default function SignUpOne() {
                     ></input>
                   </div>
                   
-                </div>
+                </div> */}
                 <div>
                   <div className="flex items-center justify-between">
                     <label htmlFor="password" className="text-base font-medium text-gray-900">
