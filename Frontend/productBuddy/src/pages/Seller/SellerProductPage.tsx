@@ -35,10 +35,11 @@ const data = {
 function SellerProductPage() {
   return (
     <>
+    <div className="flex justify-center"> {/* Container */}
       <div className="flex flex-col justify-center p-8">
         <div className="max-w-4xl flex justify-center">
           <div className="w-1/2">
-            <img src="https://images.unsplash.com/photo-1589365252845-092198ba5334?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+            <img src="https://images.unsplash.com/photo-1589365252845-092198ba5334?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='rounded-md'/>
           </div>
           <div className="w-1/2 p-8">
             <h1 className="text-3xl font-semibold mb-4">Product Title</h1>
@@ -49,13 +50,19 @@ function SellerProductPage() {
             <div className="text-xl mb-6">Price: $99.99</div>
             <button className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">Buy Now</button>
           </div>
-      </div>
-          <div className='max-w-[200px]'>
-          <Pie data={data} />
-
+        </div>
+        <div className="flex flex-col items-center mt-10"> {/* Centered Stats Container */}
+          <div className='text-[30px] font-bold'>Product Stats</div>
+          <div className='max-w-[500px]'>
+            <Pie data={data} />
+            <div className='text-center'>Breakdown of Ratings</div>
           </div>
         </div>
-    </>
+      </div>
+    </div>
+  </>
+  
+
   );
 }
 
