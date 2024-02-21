@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { NavLink } from 'react-router-dom';
 
-function ProductCard({title,id}:{title:string,id:number}) {
+function ProductCard({title,id,image}:{title:string,id:number,image:string}) {
   console.log(id)
   return (
     <Card style={{ 
@@ -11,7 +11,7 @@ function ProductCard({title,id}:{title:string,id:number}) {
       padding: '15px', // Add padding
       margin: '20px' // Add margin
     }} className='rounded-md flex flex-col gap-4'>
-      <Card.Img variant="top" src="https://images.unsplash.com/photo-1708022774121-4107be488ad8?q=80&w=1987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='rounded-md'/>
+      <Card.Img variant="top" src={image} className='rounded-md  max-w-[200px] max-h-[200px]'/>
       <Card.Body className='flex flex-col gap-2'>
         <Card.Title className='text-[20px] font-bold'>{title}</Card.Title>
         <Card.Text>

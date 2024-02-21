@@ -8,6 +8,11 @@ from .serializers import ProductSerializer, ReviewSerializer
 from .sentiment_analyzer import SentimentAnalyzer, EmotionAnalyzer
 from django.http import JsonResponse
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import logout, authenticate, login
+
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -140,6 +145,14 @@ class ProductReviewListView(ListAPIView):
         product_id = self.kwargs['product_id']
         return Review.objects.filter(product_id=product_id)
     
+
+# Create your views here.
+def index(request):
+    print(request.user)
+    if request.user.is_anonymous:
+        return redirect("/login") 
+    return render(request, 'index.html')
+
 @api_view(['GET'])
 def get_single_product_info(request, product_id):
     product = Product.objects.get(id=product_id)
@@ -177,4 +190,6 @@ def login(request):
                 return JsonResponse({'info': 'Incorrect credentials!'}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
             return JsonResponse({'info': 'User does not exist!'}, status=status.HTTP_404_NOT_FOUND)
+
+
 

@@ -14,34 +14,34 @@ export default function Faq() {
               
                 <div  className="mt-10 first:mt-0">
                   <dt className="text-lg font-semibold leading-6 text-gray-900">
-                    How does the anonymous reporting process work?
+                  What is sentiment analysis, and how does it work?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Our platform provides a secure and confidential channel for individuals to submit feedback on Amazon products without revealing their identity. You can share your opinions online or through our designated feedback submission form, and your identity will remain protected throughout the process.
+                  Sentiment analysis is a process used to determine the emotional tone behind a piece of text, such as a review. Our app utilizes natural language processing (NLP) techniques to analyze the language used in Amazon reviews. It identifies keywords, phrases, and linguistic patterns to classify the sentiment as positive, negative, or neutral.
                   </dd>
                 </div>
                 <div  className="mt-10 first:mt-0">
                   <dt className="text-lg font-semibold leading-6 text-gray-900">
-                  Is the anonymity of the reviewer guaranteed?
+                  How accurate is the sentiment analysis provided by the app?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Yes, we take the anonymity of reviewers very seriously. We employ robust encryption techniques and do not collect any personally identifiable information unless explicitly provided. Our platform ensures that even our staff members cannot access the identity of the reviewer.
+                  The accuracy of sentiment analysis can vary depending on factors such as the complexity of the language used, the context of the review, and the quality of the algorithm. Our app employs state-of-the-art machine learning models trained on vast datasets to achieve high accuracy. However, it's essential to understand that no sentiment analysis tool is perfect, and occasional inaccuracies may occur.
                   </dd>
                 </div>
                 <div  className="mt-10 first:mt-0">
                   <dt className="text-lg font-semibold leading-6 text-gray-900">
-                  What types of feedback can be reported through this platform?
+                  Are there any limitations to the types of reviews the app can analyze?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Our platform accepts feedback for a wide range of Amazon products, including but not limited to electronics, books, clothing, household items, and more. We encourage individuals to share their honest opinions and experiences with any product they've purchased or interacted with on Amazon.
+                  While our app can analyze a wide range of review formats and content, there may be limitations in handling extremely short or poorly structured reviews. Additionally, reviews containing highly specialized jargon or slang may pose challenges for accurate analysis.
                   </dd>
                 </div>
                 <div  className="mt-10 first:mt-0">
                   <dt className="text-lg font-semibold leading-6 text-gray-900">
-                  How will the reported feedback be used by sellers or relevant stakeholders?
+                  How can I interpret the insights provided by the app?
                   </dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                  Once feedback is submitted, our team analyzes the information to extract insights and identify prevailing sentiments and themes within Amazon customer reviews. Credible feedback is then aggregated and provided to sellers or relevant stakeholders for further analysis and action. We collaborate closely with sellers to help them understand customer sentiments and make informed decisions to improve their products and services.
+                  Our app includes features and resources to help users interpret the sentiment analysis insights effectively. We provide explanations of key metrics and trends, along with visualizations such as charts and graphs to enhance understanding. Additionally, our support team is available to answer any questions and provide guidance on interpretation as needed.
                   </dd>
                 </div>
               
