@@ -40,3 +40,4 @@ export const signupUser = (authData:{username:string,password:string})=>API.post
 export const reviewEmotion = (prodId:number)=>API.get(`products/${prodId}/review-emotion-score/`)
 export const reviewSentimentScore = (prodId:number)=>API.get(`products/${prodId}/review-sentiment-score/`)
 export const getProduct = (prodId:number)=>API.get(`products/${prodId}/`)
+export const getTopics = (prodId:number)=>API.get(`products/${prodId}/topics/`)
