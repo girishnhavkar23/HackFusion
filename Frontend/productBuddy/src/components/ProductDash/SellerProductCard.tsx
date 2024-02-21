@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { NavLink } from 'react-router-dom';
 
-function SellerProductCard({title,image}:{title:string,image:string}) {
+function SellerProductCard({title,image,id}:{title:string,image:string,id:number}) {
   return (
     <Card style={{ 
       width: '20rem', 
@@ -17,7 +17,7 @@ function SellerProductCard({title,image}:{title:string,image:string}) {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <NavLink to={`/seller/product/${4}`} className='border p-4 hover:bg-[#cfe6fe] rounded-lg text-center'>
+        <NavLink to={`/seller/product/${id}`} className='border p-4 hover:bg-[#cfe6fe] rounded-lg text-center'>
             <Button variant="primary" >View Product</Button>
         </NavLink>
       </Card.Body>

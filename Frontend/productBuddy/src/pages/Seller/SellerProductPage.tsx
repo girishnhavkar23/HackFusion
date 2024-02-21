@@ -30,13 +30,14 @@ function SellerProductPage() {
   const [sentiment,setSentiment] = useState()
   const [product,setProduct] = useState()
   const [dataArray,setDataArray] = useState([])
+  const [topics,setTopics] = useState()
   useEffect(()=>{
     const fetchSentiment = async ()=>{
       try{
         const response = await getProduct(Number(productId))
         const response1 = await reviewSentimentScore(Number(productId))
-        // const response2 = await getTopics(Number(productId))
-        // console.log(response2)
+        const response2 = await getTopics(Number(productId))
+        setTopics(response2.data.topics)
         setProduct(response.data["product-info"])
         setSentiment(response1.data.avgScore)
         setDataArray(convertToCountArray(response1.data.review_scores))
@@ -98,7 +99,7 @@ function SellerProductPage() {
           <div className="w-1/2 p-8 flex flex-col justify-center">
             <h1 className="text-3xl font-semibold text-gray-800 mb-4">{product.name}</h1>
             <div className="border-red-500 border-2 rounded-md p-4 text-lg font-bold text-black mb-6">Average Sentiment Score of All the Reviews: {sentiment}</div>
-            
+            {topics && <div>The common topics in the reviews are {topics.map((item)=>(<div className="font-bold">{item}</div>))}</div>}
             
           </div>
         </div>
