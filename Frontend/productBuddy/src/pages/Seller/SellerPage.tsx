@@ -6,6 +6,7 @@ function SellerPage() {
     <div>
       <Nav1/>
       <Outlet/>
+      
     </div>
   )
 }
