@@ -40,5 +40,6 @@ topics, _ = topic_model.fit_transform(converted_data)
 
 print(topic_model.get_topic_freq())
 print(topic_model.get_topic_info())
+print(topic_model.get_topic(0))
 
 topic_model.save("BERTopic_Model_New")
