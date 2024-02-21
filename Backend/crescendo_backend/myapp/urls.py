@@ -1,6 +1,4 @@
-from django.contrib import admin
 from django.urls import path
-
 from . import views
 
 urlpatterns = [
@@ -11,6 +9,6 @@ urlpatterns = [
     path('products/<int:product_id>/reviews/', views.ProductReviewListView.as_view(), name='product_reviews'),
     path('products/<int:product_id>/review-sentiment-score/', views.review_sentiment_score, name='review_sentiment_score'),
     path('products/<int:product_id>/review-emotion-score/', views.review_emotion_score, name='review_sentiment'),
+    path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
-    path('signup/', views.signup, name='signup')
 ]

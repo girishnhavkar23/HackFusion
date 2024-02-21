@@ -8,6 +8,7 @@ import { getProduct, getTopics, reviewSentimentScore } from '@/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewEmotion from '../Products/ReviewEmotion';
+import SpinnerCircular from '@/components/ui/SpinnerCircular';
 
 
 
@@ -31,9 +32,11 @@ function SellerProductPage() {
   const [product,setProduct] = useState()
   const [dataArray,setDataArray] = useState([])
   const [topics,setTopics] = useState()
+  const [isLoading,setIsLoading] = useState(true)
   useEffect(()=>{
     const fetchSentiment = async ()=>{
       try{
+        setIsLoading(true)
         const response = await getProduct(Number(productId))
         const response1 = await reviewSentimentScore(Number(productId))
         const response2 = await getTopics(Number(productId))
@@ -44,6 +47,10 @@ function SellerProductPage() {
       }
       catch(e){
         console.log(e)
+      }
+      finally{
+        setIsLoading(false)
+      
       }
     }
     fetchSentiment();
@@ -87,7 +94,7 @@ function SellerProductPage() {
   console.log(dataArray)
   return (
     <>
-    {
+    {isLoading?<SpinnerCircular/>:
       product &&
     <div className="flex justify-center"> {/* Container */}
       <div className="flex flex-col justify-center p-8">

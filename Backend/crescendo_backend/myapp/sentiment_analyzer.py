@@ -26,12 +26,10 @@ class EmotionAnalyzer:
         self.model = AutoModelForSequenceClassification.from_pretrained("SamLowe/roberta-base-go_emotions")
         self.classifier = pipeline(task="text-classification", model="SamLowe/roberta-base-go_emotions", top_k=None)
 
-# sentences = ["I am not having a great day"]
-    def get_emotion(self, review_list):
+    def get_emotion(self, review_list): #Takes a list of reviews as input. Outputs combined emotion of the document.
 
         model_outputs = self.classifier(review_list)
-        return model_outputs[0]
-# produces a list of dicts for each of the labels
+        return model_outputs[0] # produces a list of dicts for each of the labels
     
 # emotion_analyzer = EmotionAnalyzer()
 # result = emotion_analyzer.get_emotion(["The brush is very effective in cleaning, I feel the teeth are more clean than manual brushing. the overall spending on brushing might shoot up, but it will average by reducing future dental visits. I normally go to dental cleanup once a year, but I feel with this addition I can go to dental cleanup once every 2 years, the sensitive mode (2nd mode) fits me and in this, you can even clean/massage your gums. The timer feature is cool and it makes me pay attention to cleaning. sometimes when I am still sleepy, my mind wavers and I might miss a spot, this can be avoided. And I have bought extra heads and now me and my wife use our heads by interchanging whenever we use them. There is no lock or click for head attachment so there wont be any wear and tear worry while interchanging heads."])
