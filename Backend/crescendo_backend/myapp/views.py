@@ -3,9 +3,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 from rest_framework.generics import ListAPIView
-from .models import Product, Review, ReviewScore, ProductTotalScore
+from .models import Product, Review, ReviewScore, ProductTotalScore, ReviewEmotion
 from .serializers import ProductSerializer, ReviewSerializer
-from .sentiment_analyzer import SentimentAnalyzer
+from .sentiment_analyzer import SentimentAnalyzer, EmotionAnalyzer
 from django.http import JsonResponse
 
 from django.shortcuts import render, redirect
@@ -41,6 +41,56 @@ def review_sentiment_score(request, product_id):
     except ProductTotalScore.DoesNotExist:
         ProductTotalScore.objects.create(product_id=product_id, total_score=avgScore)
     return Response({'review_scores': review_scores, 'avgScore': avgScore}) #Returns review score pair!
+
+@api_view(['GET'])
+def review_emotion_score(request, product_id):
+    review_emotions = []
+    emotion_analyzer = EmotionAnalyzer()
+    for review in Review.objects.filter(product_id=product_id):
+        emotion = emotion_analyzer.get_emotion(review.text)
+        print(emotion)
+        e1 = list(emotion[0].values())[0]
+        e2 = list(emotion[1].values())[0]
+        review_emotions.append({
+            'review': review.text,
+            'emotion1': e1,
+            'emotion2': e2
+        })
+        try:
+            review_emotion = ReviewEmotion.objects.get(review_id=review.id)
+            review_emotion.emotion1 = e1
+            review_emotion.emotion2 = e2
+            review_emotion.save()
+        except ReviewEmotion.DoesNotExist:
+            ReviewEmotion.objects.create(review_id=review.id, emotion1=e1, emotion2=e2)
+    return Response({'review_emotions': review_emotions})
+
+from django.http import HttpResponse
+from bertopic import BERTopic
+
+@api_view(['GET'])
+def get_product_topics(request, product_id):
+    # Load the trained BERTopic model
+    topic_model = BERTopic.load("BERTopic_Model_New")
+
+    print(topic_model.get_topic_info())
+
+    # Get a new review from the request
+    review_list = []
+    for review in Review.objects.filter(product_id=product_id):
+        review_list.append(review.text)
+
+    print(review_list)
+
+    # Use the BERTopic model to get the topic for the new review
+    topic, _ = topic_model.transform(review_list)
+
+    topics = topic_model.get_topic(0)
+    print(topic_model.get_topic(0))
+    #print(topic_model.get_document_info(review_list))
+
+    # Return the topic in the HTTP response
+    return HttpResponse(f"The topic of your review is: {topics}")
 
 # @api_view(['GET'])
 # def get_product_topics(request):
@@ -79,14 +129,19 @@ class ProductReviewListView(ListAPIView):
         product_id = self.kwargs['product_id']
         return Review.objects.filter(product_id=product_id)
     
-<<<<<<< HEAD
+
 # Create your views here.
 def index(request):
     print(request.user)
     if request.user.is_anonymous:
         return redirect("/login") 
     return render(request, 'index.html')
-=======
+
+@api_view(['GET'])
+def get_single_product_info(request, product_id):
+    product = Product.objects.get(id=product_id)
+    return JsonResponse({'product-info': ProductSerializer(product).data})
+    
 #Login/Logout
     
 from django.contrib.auth.models import User
@@ -119,6 +174,6 @@ def login(request):
                 return JsonResponse({'info': 'Incorrect credentials!'}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
             return JsonResponse({'info': 'User does not exist!'}, status=status.HTTP_404_NOT_FOUND)
->>>>>>> c963140068695ea1dd1c77a766e4b6b12c0325ed
+
 
 
